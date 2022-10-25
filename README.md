@@ -1,5 +1,5 @@
 # SimpleHotkeys
-Python library for creating keyboard shortcusts based on [pynput](https://github.com/moses-palmer/pynput) library.
+Python library for creating keyboard shortcuts based on [pynput](https://github.com/moses-palmer/pynput) library.
 
 ## Usage
 
