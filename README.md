@@ -52,7 +52,7 @@ time.sleep(30)
 simplehotkeys.add_hotkey(keys)
 input("from now no keypresses are handled")
 ```
-Inputs key combination and for 30 seconds react to its events, then remove all the callbacks.
+Inputs key combination and for 30 seconds react to its events, then removes all the callbacks.
 
 ```
 now press your desired hotkey
@@ -65,7 +65,7 @@ from now no keypresses are handled
 ```
 
 ## Instalation
-No option to install via `pip` yet.  
+Currently no option to install via `pip`.  
 Simply add the `simplehotkeys.py` to your project directory.
 
 
@@ -74,7 +74,10 @@ Simply add the `simplehotkeys.py` to your project directory.
 ```python
 simplehotkeys.add_hotkey(keys_list, callback_on_press=None, callback_on_longpress=None, callback_on_toolongpress=None, callback_on_doublepress=None)
 ```
-Sets up callbacks for given key combination and event. Note that there is little reaction delay that depends on what callbacks are set (when only `callback_on_press` is set calls callback on keydown, when `callback_on_longpress` or `callback_on_toolongpress` is set waits for the key release, when `callback_on_doublepress` is set waits for next keypress).  
+Sets up callbacks for given key combination. Note that there is little reaction delay that depends on what callbacks are set (
+when only `callback_on_press` is set, the callback is called on keydown;
+when `callback_on_longpress` or `callback_on_toolongpress` is set, it waits for the key release;
+when `callback_on_doublepress` is set, waits for next keypress).  
 Calling this function for the second time with same key_list will remove the old callbacks.  
 To prevent blocking keypress detection, callbacks are always called as threads.
 
