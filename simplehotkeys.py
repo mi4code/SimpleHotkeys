@@ -6,6 +6,7 @@ LONGPRESS_VS_TOOLONGPRESS = 1600/1000
 DOUBLEPRESS_BETWEEN = 300/1000
 CALL_THREADED = True
 
+# (TO CHOOSE BETWEEN pynput AND keyboard EDIT "def pressed ()" AND CHECK WHICH KEY FORMAT IS USED IN YOUR CODE (string VS pynput.Key)) - NOW AUTODETECTED (depends on whether you give <class 'str> or <enum 'Key'>)
 
 ## pynput ##
 import pynput.keyboard 
@@ -40,8 +41,8 @@ def pynput_pressed_exclusively(keys=[]):  # are exactly these keys pressed? othe
         return False   
 ## pynput ##
 
-'''
-## keyboard ## - keyboard library can be also used (but was removed because contained bugs)
+
+## keyboard ## - keyboard library can be also used (but was removed because contained bugs) - https://github.com/boppreh/keyboard/issues/41
 import keyboard
 
 def keyboard_pressed(keys=[]): ## IF PRESSED + DONT CARE ABOUT OTHER KEYS => ITS NOT EXCLUSIVELY PRESSED
@@ -51,14 +52,19 @@ def keyboard_pressed(keys=[]): ## IF PRESSED + DONT CARE ABOUT OTHER KEYS => ITS
     return True
     
  ## keyboard ##
-'''
+
 
 
 
 def pressed (keys=[]):
     # TODO: convert keys=<string list> to pynput key list
-    #return keyboard_pressed(keys)
-    return pynput_pressed_exclusively(keys)
+    if type(keys[0]) == str:
+        return keyboard_pressed(keys)
+    elif type(keys[0]) == pynput.keyboard.Key:
+        return pynput_pressed_exclusively(keys)
+    else:
+        print ('simplehotkeys: ERROR key list "'+keys+'" is not in valid format')
+        return False
 
 
 

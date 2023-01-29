@@ -1,5 +1,5 @@
 # SimpleHotkeys
-Python library for creating keyboard shortcuts based on [pynput](https://github.com/moses-palmer/pynput) library.
+Python library for creating keyboard shortcuts based on [pynput](https://github.com/moses-palmer/pynput) and [keyboard](https://github.com/boppreh/keyboard) library.
 
 ## Usage
 
@@ -64,6 +64,16 @@ too long press
 from now no keypresses are handled
 ```
 
+### Choosing whether to utilize [pynput](https://github.com/moses-palmer/pynput) or [keyboard](https://github.com/boppreh/keyboard)
+I ran into problems when using both libraries on Windows ([keyboard](https://github.com/boppreh/keyboard) misdetects `numpad *` as `print screen`; with [pynput](https://github.com/moses-palmer/pynput) hotkeys stops working after some time) so i decided to implement both.
+The choice of [pynput](https://github.com/moses-palmer/pynput) or [keyboard](https://github.com/boppreh/keyboard) depends on what is given as `keys` to `simplehotkeys.add_hotkey` method:
+```python
+simplehotkeys.add_hotkey(["print screen"], lambda: print("keyboard"))  # use keyboard backend since keyboard accepts bare strings
+
+simplehotkeys.add_hotkey([keyboard2.Key.print_screen], lambda: print("pynput"))  # use pynput backend
+```
+
+
 ## Instalation
 Currently no option to install via `pip`.  
 Simply add the `simplehotkeys.py` to your project directory.
@@ -89,4 +99,3 @@ Waits for key combination being pressed and returns it as list of keys. If no ke
 ## Todos
  - Use key strings list instead of list of pynput key objects.
  - Add hotkey handler that will return keypress duration, keypress number, ... (customizable mode)
-
