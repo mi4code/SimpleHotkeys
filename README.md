@@ -70,7 +70,7 @@ The choice of [pynput](https://github.com/moses-palmer/pynput) or [keyboard](htt
 ```python
 simplehotkeys.add_hotkey(["print screen"], lambda: print("keyboard"))  # use keyboard backend since keyboard accepts bare strings
 
-simplehotkeys.add_hotkey([keyboard2.Key.print_screen], lambda: print("pynput"))  # use pynput backend
+simplehotkeys.add_hotkey([pynput.keyboard.Key.print_screen], lambda: print("pynput"))  # use pynput backend
 ```
 
 
